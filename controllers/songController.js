@@ -23,7 +23,7 @@ const deleteSongs = (req, res, next) => {
     .json({message: 'Deleting songs'})
 }
 
-module.export = {
+module.exports = {
     getSongs,
     postSong,
     deleteSongs

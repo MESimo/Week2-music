@@ -23,7 +23,7 @@ const deleteUsers = (req, res, next) => {
     .json({message: 'Deleting users'})
 }
 
-module.export = {
+module.exports = {
     getUsers,
     postUser,
     deleteUsers
