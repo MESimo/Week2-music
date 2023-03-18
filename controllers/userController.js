@@ -1,4 +1,20 @@
 const getUsers = (req, res, next) => {
+    if (Object.keys(req.query).length) {
+        const {
+            userName,
+            gender
+        } = req.query
+    
+        const filter = [];
+    
+        if (userName) filter.push(userName)
+        if (gender) filter.push(gender)
+    
+        for (const query of filter) {
+            console.log(`Searching user by ${query}`)
+        }
+    }
+
     res
     .status(200)
     .setHeader('Content-Type', 'application/json')
@@ -23,8 +39,35 @@ const deleteUsers = (req, res, next) => {
     .json({message: 'Deleting users'})
 }
 
+const getUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({message: `Show me the user with the Id of ${req.params.userId}
+    `})
+}
+
+const updateUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({message: `Update the user with the Id of ${req.params.userId}
+    `})
+}
+
+const deleteUser = (req, res, next) => {
+    res
+    .status(200)
+    .setHeader('Content-Type', 'application/json')
+    .json({message: `Delete the user with the Id of ${req.params.userId}
+    `})
+}
+
 module.exports = {
     getUsers,
     postUser,
-    deleteUsers
+    deleteUsers,
+    getUser,
+    updateUser,
+    deleteUser
 }
